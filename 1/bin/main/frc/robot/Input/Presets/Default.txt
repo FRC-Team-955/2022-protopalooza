@@ -1,0 +1,46 @@
+{
+    "ButtonBindings": [
+      "2",
+      "3"
+    ],
+    "AxisComposite": [
+      "false",
+      "false",
+      "false",
+      "false",
+      "true",
+      "true",
+      "false",
+      "true"
+    ],
+    "AxisBinding": [
+      "0",
+      "1",
+      "3",
+      "4",
+      "4",
+      "5",
+      "2",
+      "7"
+    ],
+    "AxisCompositePositive": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "10",
+      "10",
+      "0",
+      "10"
+    ],
+    "AxisCompositeNegative": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "10",
+      "10",
+      "0",
+      "10"
+    ]
+}
