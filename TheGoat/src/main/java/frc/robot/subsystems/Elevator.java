@@ -26,8 +26,10 @@ public class Elevator {
         
         if (joyPos < 0 && mElevatorMotor.getSelectedSensorPosition() <= 5000){
             mElevatorMotor.set(ControlMode.PercentOutput, 0);
-        } else if (joyPos > 0 && mTopLimitSwitch.get() == true){
-            mElevatorMotor.set(ControlMode.PercentOutput, 0);
+        } else if (joyPos > 0 && mTopLimitSwitch.get() == true) {
+            mElevatorMotor.set(ControlMode.PercentOutput, 0);  
+        } else if (joyPos > 0 && mElevatorMotor.getSelectedSensorPosition() >= 300000 || joyPos < 0 && mElevatorMotor.getSelectedSensorPosition() <= 1000){
+            mElevatorMotor.set(ControlMode.PercentOutput, .2);
         } else{
             mElevatorMotor.set(ControlMode.PercentOutput, joyPos * .5);
         }
