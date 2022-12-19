@@ -30,38 +30,32 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     // Drivebase
-    mDrive.drive(mDriveJoy.getLeftY(), mDriveJoy.getRightX());
+    mDrive.drive(mDriveJoy.getLeftY() * .5, mDriveJoy.getRightX() * .5);
 
     // Elevator
-    if (mMechJoy.getLeftBumper()){
-      mElevator.moveElevator(mMechJoy.getRightY());
-    }
-
+    mElevator.moveElevator(mMechJoy.getRightY());
+    
     // Intake
-    // if (mMechJoy.getAButton()){
-    //   if(mMechJoy.getRightTriggerAxis() > 0 && mMechJoy.getRightTriggerAxis() > 0){
-    //     mIntake.stopSpin();
-    //   } else if(mMechJoy.getRightTriggerAxis() == 1){
-    //     mIntake.spinIn();
-    //   } else if (mMechJoy.getLeftTriggerAxis() == 1){
-    //     mIntake.spinOut();
-    //   } else {
-    //     mIntake.stopSpin();
-    //   }
-    // }
-
-    if (mMechJoy.getAButton()) {
-      if(mMechJoy.getRightTriggerAxis() == 1){
-        mIntake.spinOut();
-      } else if (mMechJoy.getLeftTriggerAxis() == 1){
-        mIntake.spinIn();
-      } else if (mMechJoy.getRightTriggerAxis() > 0 && mMechJoy.getLeftTriggerAxis() > 0) {
-        mIntake.stopSpin();
-      } else {
-        mIntake.stopSpin();
-      }
+    if (mMechJoy.getRightTriggerAxis() == 0 && mMechJoy.getLeftTriggerAxis() == 0){
+      mIntake.stopSpin();
+    } else if (mMechJoy.getRightTriggerAxis() > 0) {
+      mIntake.spinIn(mMechJoy.getRightTriggerAxis());
+    } else if (mMechJoy.getLeftTriggerAxis() > 0) {
+      mIntake.spinOut(mMechJoy.getLeftTriggerAxis());
     }
   }
+
+    // Intake
+    // if(mMechJoy.getRightTriggerAxis() == 1){
+    //   mIntake.spinOut();
+    // } else if (mMechJoy.getLeftTriggerAxis() == 1){
+    //   mIntake.spinIn();
+    // } else if (mMechJoy.getRightTriggerAxis() > 0 && mMechJoy.getLeftTriggerAxis() > 0) {
+    //   mIntake.stopSpin();
+    // } else {
+    //   mIntake.stopSpin();
+    // }
+    // } 
   
   @Override
   public void disabledInit() {}

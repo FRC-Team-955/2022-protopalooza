@@ -23,7 +23,7 @@ public class Constants {
     }
 
     public static final class IntakeConstants {
-        public static int kFrontIntakeMotorId = 9;
-        public static int kBackIntakeMotorId = 0;
+        public static int kFrontIntakeMotorId = 1;
+        public static int kBackIntakeMotorId = 4;
     }
 }
