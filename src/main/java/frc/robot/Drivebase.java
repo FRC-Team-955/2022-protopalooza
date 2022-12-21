@@ -29,8 +29,8 @@ public class Drivebase {
 
     public void drive(){
         mSparkMaxBotRight.follow(mSparkMaxTopRight);
-        mSparkMaxBotLeft.follow(mSparkMaxTopLeft);
-        mDiffDrive.arcadeDrive(mJoy.getRawAxis(1), mJoy.getRawAxis(4));
+        mSparkMaxBotLeft.follow(mSparkMaxTopLeft); 
+        mDiffDrive.arcadeDrive( 0.5 * mJoy.getRawAxis(1), 0.5 *mJoy.getRawAxis(4));
     }
 
     // public double getLeftEncoderPos(){

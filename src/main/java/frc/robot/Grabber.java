@@ -4,23 +4,17 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Grabber {
-    public TalonSRX grabberMotor = new TalonSRX(1);
+    public TalonSRX grabberMotor = new TalonSRX(9);
 
-    public void grab(){
-        if(grabberMotor.getSelectedSensorPosition() <2500){
-            grabberMotor.set(ControlMode.PercentOutput, 0.5);
-        }
-        else{
-            grabberMotor.set(ControlMode.PercentOutput, 0);
-        }   
+    public void setZero(){
+        grabberMotor.setSelectedSensorPosition(0);
     }
 
-    public void release(){
-        if(grabberMotor.getSelectedSensorPosition() > 100){
-            grabberMotor.set(ControlMode.PercentOutput, -0.5);
-        }
-        else{
-            grabberMotor.set(ControlMode.PercentOutput, 0);
-        }
+    public double getPosition(){
+        return grabberMotor.getSelectedSensorPosition(0);
+    }
+
+    public void grab(double joystick_position){
+        grabberMotor.set(ControlMode.PercentOutput, joystick_position * 0.5);
     }
 }

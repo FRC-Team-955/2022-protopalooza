@@ -23,11 +23,10 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
 
-  // private Elevator mElevator = new Elevator();
-  // private Drivebase mDrive = new Drivebase();
-  // private Joystick mJoy0 = new Joystick(0);
-  // private Joystick mJoy1 = new Joystick(1);
-    public TalonSRX talon = new TalonSRX(4);
+  private Elevator mElevator = new Elevator();
+  private Drivebase mDrive = new Drivebase();
+  private Joystick mJoy1 = new Joystick(1);
+  private Grabber mGrabber = new Grabber();
   @Override
   public void robotInit() {}
 
@@ -42,16 +41,16 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    mGrabber.setZero();
   }
 
   @Override
   public void teleopPeriodic() {
-    //mDrive.drive();
-    //mElevator.ElevatorMove(mJoy1.getRawAxis(1));
-    talon.set(ControlMode.PercentOutput, -0.25);
-    System.out.println(talon.getSelectedSensorPosition());
+    
+     mDrive.drive();
+     mElevator.ElevatorMove(mJoy1.getRawAxis(1));
+      mGrabber.grab(mJoy1.getRawAxis(5));
   }
-
   @Override
   public void disabledInit() {}
 
